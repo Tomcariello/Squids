@@ -5,32 +5,53 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
      bool isGrounded = false; //Track if the player is touching the ground
+	 string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
+	public GameObject Player_Sprite; //Reference to the player Sprite
 
+	public Animator Player_Anim; //Reference to the player GameObject (Parent of all player elements)
 	public GameObject Ink_Bullet; //Reference to the bullet prefab
 	private bool currentlyShooting = false; //track to control the bullet frequency
 	public Transform InkBulletSpawn; //where to launch the bullet from
 
-	// Use this for initialization
+	float moveHorizontal; //Read Input to track horizontal movement
+	float moveVertical;//Read Input to track vertical movement
+	
 	void Start () {
+		Player_Anim = Player_Sprite.GetComponent<Animator>(); //Get variable link to animator
 	}
 	
 	void Update () {
-		
-		//Shoot bullets when space bar is clicked
+
+		//Read control inputs
+		moveHorizontal = Input.GetAxisRaw ("Horizontal");
+		moveVertical = Input.GetAxisRaw ("Vertical");
+
+		//Shoot bullets when space bar is pressed
 		if (Input.GetKey (KeyCode.Space)) {
 			//If not already shooting
 			if (currentlyShooting == false) {
 				currentlyShooting = true;
 				InkBulletSpawn = transform; //Store current position of the player
 
+				Vector3 m_Position;
+				int bulletSpeed;
+
+				if (directionPlayerFacing == "left") {
+					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 bulletSpeed = -20;
+				} else {
+					m_Position = new Vector3(InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					bulletSpeed = 20;
+				}
+				
 				// Create the Bullet from the Ink_Bullet Prefab
 				var bullet = (GameObject)Instantiate (
 					Ink_Bullet, //Prefab
-					InkBulletSpawn.position, //Position of player
-					InkBulletSpawn.rotation); //Rotation of player. Probably unnecessary on a 2D plane.
+					m_Position, //Position of player
+					InkBulletSpawn.rotation);
 
 				// Add horizontal velocity to the bullet
-				bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 6;
+				bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
 
 				// Destroy the bullet after 2 seconds
 				Destroy(bullet, 2.0f);
@@ -67,25 +88,53 @@ public class PlayerController : MonoBehaviour {
 				transform.Translate(-Vector2.right * 10f * Time.deltaTime);
 			}
 		}
+
+		//Check inputs & control the sprite direction
+		playerDirection();
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {
-		//if bomb hits the barrel
+		//determine if squid is touching the ground
 		if(coll.gameObject.tag == "Ground") {
 			isGrounded = true;
 		}
 	}
 
 	void OnCollisionExit2D (Collision2D coll) {
-		//if bomb hits the barrel
+		//determine if the squid is not touching the ground
 		if(coll.gameObject.tag == "Ground") {
 			isGrounded = false;
 		}
 	}
 
+	//Limit the rate of fire of the squid
 	IEnumerator shotLimiter() {
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(.25f);
 		currentlyShooting = false;
+	}
+
+	void playerDirection() {
+		//Player moving horizontally
+		if (moveHorizontal != 0) {
+			Player_Anim.SetBool("movePlayer",true); //Set move animation
+
+			//If player pushing left, set player sprite to face left
+			if (moveHorizontal < 0) {
+				directionPlayerFacing = "left";
+				Vector3 spriteLocalscale = transform.localScale;
+				spriteLocalscale.x = -1.3f;
+				transform.localScale = spriteLocalscale;
+			} else { //If player pushing right, set player sprite to face right
+				directionPlayerFacing = "right";
+				Vector3 spriteLocalscale = transform.localScale;
+				spriteLocalscale.x = 1.3f;
+				transform.localScale = spriteLocalscale;
+			}
+		} else {
+			//Not moving horizontally, so set boolean value to false
+			Player_Anim.SetBool("movePlayer",false);
+		}
+
 	}
 
 }
