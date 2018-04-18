@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50827672834497680}
   m_Layer: 0
   m_Name: Ink_Bullet
-  m_TagString: Untagged
+  m_TagString: InkBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058684349777070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9520524, y: -1.0825291, z: 22.933292}
+  m_LocalPosition: {x: -5.9859953, y: -2.2298675, z: 22.933292}
   m_LocalScale: {x: 0.30069253, y: 0.25201634, z: 135.76451}
   m_Children: []
   m_Father: {fileID: 0}

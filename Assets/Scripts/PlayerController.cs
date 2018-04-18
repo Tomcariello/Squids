@@ -32,23 +32,49 @@ public class PlayerController : MonoBehaviour {
 			if (currentlyShooting == false) {
 				currentlyShooting = true;
 				InkBulletSpawn = transform; //Store current position of the player
+				Quaternion shotAngle = Quaternion.Euler(new Vector3(0,0,0));
 
 				Vector3 m_Position;
 				int bulletSpeed;
 
-				if (directionPlayerFacing == "left") {
+				//shoot left & up
+				if (directionPlayerFacing == "left" && moveVertical > 0) {
+					Debug.Log("left & Update");
 					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
 					 bulletSpeed = -20;
+				//shoot left and down
+				} else if (directionPlayerFacing == "left" && moveVertical < 0) {
+					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
+					 bulletSpeed = -20;
+				//shoot straight left
+				} else if (directionPlayerFacing == "left") {
+					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,0));
+					 bulletSpeed = -20;
+				//shoot right and up
+				} else if (directionPlayerFacing == "right" && moveVertical > 0) {
+					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
+					 bulletSpeed = 20;
+				//shoot right and down
+				} else if (directionPlayerFacing == "right" && moveVertical < 0) {
+					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
+					 bulletSpeed = 20;
+				//shoot straight right
 				} else {
-					m_Position = new Vector3(InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					bulletSpeed = 20;
+					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+					 shotAngle = Quaternion.Euler(new Vector3(0,0,0));
+					 bulletSpeed = 20;
 				}
-				
+
 				// Create the Bullet from the Ink_Bullet Prefab
 				var bullet = (GameObject)Instantiate (
 					Ink_Bullet, //Prefab
 					m_Position, //Position of player
-					InkBulletSpawn.rotation);
+					shotAngle);
 
 				// Add horizontal velocity to the bullet
 				bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
@@ -63,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 
 
 		//Jump controls
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.Z)) {
 			if (isGrounded == true) {
 				transform.Translate(Vector2.up * 150f * Time.deltaTime);
 			}
@@ -94,10 +120,29 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {
+
 		//determine if squid is touching the ground
 		if(coll.gameObject.tag == "Ground") {
 			isGrounded = true;
 		}
+
+		//Execute if colliding with a Level 1 Enemy
+		if(coll.gameObject.tag == "L1_Enemy") {
+			//Register on Squids power meter
+
+
+			//Apply "bounceback" effect when touching an enemy
+			if (directionPlayerFacing == "left") {
+				for (var i=0; i<10; i++) {
+					transform.Translate(Vector2.right * 10f * Time.deltaTime);
+				}
+			} else {
+				for (var i=0; i<10; i++) {
+					transform.Translate(-Vector2.right * 10f * Time.deltaTime);
+				}
+			}
+		}
+
 	}
 
 	void OnCollisionExit2D (Collision2D coll) {
@@ -106,6 +151,8 @@ public class PlayerController : MonoBehaviour {
 			isGrounded = false;
 		}
 	}
+
+
 
 	//Limit the rate of fire of the squid
 	IEnumerator shotLimiter() {

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - L1_Enemy
+  - InkBullet
   layers:
   - Default
   - TransparentFX

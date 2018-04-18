@@ -19,14 +19,18 @@ V.01: Scaffolding
         
     *Fix the camera. Why does everything rotate & fall apart when shooting? (Z-positioning had to be locked on the player. This is fixed)
 
+    *Create *one* enemy with behavior, attack pattern & power level.
+    *Allow for shooting in 7 directions (every way but down)
+    *Kill bullets when they hit a GROUND object
+
+
     Fix the camera. Why is everything so small in the editor?
     Fix the camera. Prevent camera tracking until a certain threshold is reached (ie. don't move the camera the instant the squid jumps)
-    Fix jump parameters to adjust the look & feel
-    Allow for shooting in 6-8 directions
+    
         
 
 V.02: Proof of Concept
-    Create *one* enemy with behavior, attack pattern & power level.
+    
     Create Health meter indicating when squid takes damage
     Create damage system so shots will kill Enemies
     Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
@@ -34,6 +38,12 @@ V.02: Proof of Concept
     
     UI elements:
         Inventory, Map, Etc
+
+V.03: Tighten things up
+    Fix jump parameters to adjust the look & feel
+    Fix bounceback parameters to adjust the feel
+
+
 
 For later:
     Implement Singleton model for universal game objects
