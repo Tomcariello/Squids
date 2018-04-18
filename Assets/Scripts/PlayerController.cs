@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 
 	public Animator Player_Anim; //Reference to the player GameObject (Parent of all player elements)
 	public GameObject Ink_Bullet; //Reference to the bullet prefab
+
 	private bool currentlyShooting = false; //track to control the bullet frequency
 	public Transform InkBulletSpawn; //where to launch the bullet from
 
