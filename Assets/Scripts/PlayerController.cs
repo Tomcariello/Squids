@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
      bool isGrounded = false; //Track if the player is touching the ground
 	 string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
 	public GameObject Player_Sprite; //Reference to the player Sprite
+	public GameObject Player_Canvas; //Reference to the player Canvas
 
 	public Animator Player_Anim; //Reference to the player GameObject (Parent of all player elements)
 	public GameObject Ink_Bullet; //Reference to the bullet prefab
@@ -88,7 +89,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-
 		//Jump controls
 		if (Input.GetKey (KeyCode.Z)) {
 			if (isGrounded == true) {
@@ -116,6 +116,13 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		if (GameManager.instance.playerPower == 0) {
+			Debug.Log("You're dead!");
+			Destroy(Player_Canvas);
+		}
+
+
+
 		//Check inputs & control the sprite direction
 		playerDirection();
 	}
@@ -130,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 		//Execute if colliding with a Level 1 Enemy
 		if(coll.gameObject.tag == "L1_Enemy") {
 			//Register on Squids power meter
-
+			GameManager.instance.playerPower--;
 
 			//Apply "bounceback" effect when touching an enemy
 			if (directionPlayerFacing == "left") {
