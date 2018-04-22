@@ -67,6 +67,9 @@ public class VultureEnemyController : MonoBehaviour {
 
 			//If vulture is out of power, destroy it
 			if (PowerLevel < 1) {
+				//Drop item
+				GameManager.instance.standardDrop(this.transform.position);
+
 				//Destroy the vulture
 				Destroy(thisVulture);
 			}			

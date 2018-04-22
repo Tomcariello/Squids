@@ -149,6 +149,26 @@ public class PlayerController : MonoBehaviour {
 					transform.Translate(-Vector2.right * 10f * Time.deltaTime);
 				}
 			}
+		//Do this if you collect Small Health
+		} else if(coll.gameObject.tag == "SmallHealth") {
+			//Destroy the health object you collided with
+			Destroy(coll.collider.gameObject);
+			//Increase your health if not already maxed out
+			if (GameManager.instance.playerPower + 1 >= 3) {
+				GameManager.instance.playerPower = 3;
+			} else {
+				GameManager.instance.playerPower = GameManager.instance.playerPower + 1;
+			}
+		//Do this if you collect Medium Health
+		} else if(coll.gameObject.tag == "MediumHealth") {
+			//Destroy the health object you collided with
+			Destroy(coll.collider.gameObject);
+			//Increase your health if not already maxed out
+			if (GameManager.instance.playerPower + 2 >= 3) {
+				GameManager.instance.playerPower = 3;
+			} else {
+				GameManager.instance.playerPower = GameManager.instance.playerPower + 2;
+			}
 		}
 
 	}

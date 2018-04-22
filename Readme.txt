@@ -31,23 +31,29 @@ V.02: Proof of Concept
     *Destroy squid after 3 hits
     *Create Health meter indicating when squid takes damage
 
-    Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
-
-    Create *very* basic level flow. (ie. 30 seconds of running to find an object) for a proof of concept
+    *Create health items (small/medium/large)
+    *Create Item spawner to create drops in the death position of the enemy
+    *Fill in the gaps of the basic level. Insert walls/floors/etc
     
+    Set pathfinding targeting for Vulture Prefab
+    Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
     
     UI elements:
         Inventory, Map, Etc
 
+
+
 V.03: Tighten things up
     Fix jump parameters to adjust the look & feel
     Fix bounceback parameters to adjust the feel
+    Fix Camera parameters. Sometimes jumps, frequenty too high on the screen.
 
 
 For later:
     
-    Flesh out initial level design
+    Design & implementactual level design
     Character animations
+    Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
     
     Additional player ability mechanic:
         Grip special blocks regardless of gravity
