@@ -29,9 +29,10 @@ V.02: Proof of Concept
     *Create damage system so shots will kill Enemies
     *Prevent camera tracking until a certain threshold is reached (view link on Discord for metroid style camera)
     *Destroy squid after 3 hits
+    *Create Health meter indicating when squid takes damage
 
-    Create Health meter indicating when squid takes damage (started)
     Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
+
     Create *very* basic level flow. (ie. 30 seconds of running to find an object) for a proof of concept
     
     
@@ -41,7 +42,6 @@ V.02: Proof of Concept
 V.03: Tighten things up
     Fix jump parameters to adjust the look & feel
     Fix bounceback parameters to adjust the feel
-
 
 
 For later:
