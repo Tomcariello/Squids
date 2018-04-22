@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null; 
 	
-	//Declare variable that need to be maintaind globally
+	//Declare variable to track player power level
 	public int playerPower = 3;
 
+	//Declare variables for health prefabs
 	public GameObject Small_Health_Prefab;
 	public GameObject Medium_Health_Prefab;
 	public GameObject Large_Health_Prefab;

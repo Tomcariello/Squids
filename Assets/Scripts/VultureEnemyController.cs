@@ -7,7 +7,9 @@ public class VultureEnemyController : MonoBehaviour {
 	private int PowerLevel = 3;
 	private Vector3 StartPosition;
 
-	private bool isAttacking = false;
+	private bool attackPlayer = true;
+	private bool isMoving = false;
+	private Vector3 targetPosition;
 	
 	[SerializeField]
 	private GameObject thisVulture;
@@ -18,39 +20,35 @@ public class VultureEnemyController : MonoBehaviour {
 
 
 	void Update () {
-		StartCoroutine("attackPattern");
+		//Compute distance between Vulture & Player
+		float distance = Vector3.Distance(transform.position, GameObject.Find("Player").transform.position);
 
+		//If less than 10f from the player & not already attacking, attack!	
+		if (distance < 10f && isMoving == false) {
+			StartCoroutine("attackPattern");
+		}		
 	}
-	IEnumerator attackPattern() {
-		Vector3 targetPosition;
+	IEnumerator attackPattern () {
 
-		//If the vulture is attacking, go back to start position
-		if (isAttacking) {
-			//Vulture finished attacking, so go back to the initial position
+		//If the vulture finished attacking and is not moving, return to the initial position
+		if (attackPlayer == false && isMoving == false) {
 			targetPosition = StartPosition;
-			isAttacking = false;
-
-		} else {
-			//Time to attack!
-			//Get current position
-			targetPosition = transform.position;
-
-			//Static destination values (where the vulture will move to when attacking)
-			float xDestination = targetPosition.x - 2f;
-			float yDestination = targetPosition.y - 3f;
-
-			//Adjust to target position to the values above
-			targetPosition.x = xDestination;
-			targetPosition.y = yDestination;
-			isAttacking = true;
+			attackPlayer = true;
+		} else if (attackPlayer == true && isMoving == false) {
+			//Time to attack! Get current position of Player
+			targetPosition = GameObject.Find("Player").transform.position;
+			attackPlayer = false;
 		}
 
+		isMoving = true;
 		//Execute the position adjustment of the vulture
 		while(Mathf.Abs(transform.position.x - targetPosition.x) > 0.5) {
-			transform.position = Vector2.MoveTowards(transform.position, targetPosition, 7.0f * Time.deltaTime);
+			transform.position = Vector2.MoveTowards(transform.position, targetPosition, 5.0f * Time.deltaTime);
 			
 			yield return new WaitForEndOfFrame();	
 		}
+		isMoving = false;
+
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {

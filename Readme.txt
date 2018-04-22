@@ -30,19 +30,13 @@ V.02: Proof of Concept
     *Prevent camera tracking until a certain threshold is reached (view link on Discord for metroid style camera)
     *Destroy squid after 3 hits
     *Create Health meter indicating when squid takes damage
-
     *Create health items (small/medium/large)
     *Create Item spawner to create drops in the death position of the enemy
     *Fill in the gaps of the basic level. Insert walls/floors/etc
+    *Set rudimentary pathfinding targeting for Vulture Prefab
     
-    Set pathfinding targeting for Vulture Prefab
     Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
     
-    UI elements:
-        Inventory, Map, Etc
-
-
-
 V.03: Tighten things up
     Fix jump parameters to adjust the look & feel
     Fix bounceback parameters to adjust the feel
@@ -50,10 +44,13 @@ V.03: Tighten things up
 
 
 For later:
-    
+    Add Xbox controller support
     Design & implementactual level design
     Character animations
     Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
+
+    UI elements:
+        Inventory, Map, Etc
     
     Additional player ability mechanic:
         Grip special blocks regardless of gravity
@@ -61,8 +58,7 @@ For later:
         Bio-Luminescence
         Camoflauge
     
-
-V.5: Make this professional
+V.5: Start to make this professional
     Improve graphics
     Add Sound effects
     Add music
