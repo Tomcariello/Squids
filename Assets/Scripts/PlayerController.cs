@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 
 				//shoot left & up
 				if (directionPlayerFacing == "left" && moveVertical > 0) {
-					Debug.Log("left & Update");
 					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
 					 bulletSpeed = -20;
@@ -92,27 +91,28 @@ public class PlayerController : MonoBehaviour {
 		//Jump controls
 		if (Input.GetKey (KeyCode.Z)) {
 			if (isGrounded == true) {
-				transform.Translate(Vector2.up * 150f * Time.deltaTime);
+				isGrounded = false;
+				GetComponent<Rigidbody2D>().AddForce(new Vector2(0,10), ForceMode2D.Impulse);
 			}
 		}
 
 		//move player right as per keyboard input
 		if ((Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.D))) {
 			if (isGrounded == true) {
-				transform.Translate(Vector2.right * 10f * Time.deltaTime);
+				transform.Translate(Vector2.right * 8f * Time.deltaTime);
 			} else {
 				//Adjust this to keep momentum but not add any additional force laterally while in the air
-				transform.Translate(Vector2.right * 10f * Time.deltaTime);
+				transform.Translate(Vector2.right * 4f * Time.deltaTime);
 			}
 		}
 
 		//move player left as per keyboard input
 		if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.A))) {
 			if (isGrounded == true) {
-				transform.Translate(-Vector2.right * 10f * Time.deltaTime);
+				transform.Translate(-Vector2.right * 8f * Time.deltaTime);
 			} else {
 				//Adjust this to keep momentum but not add any additional force laterally while in the air
-				transform.Translate(-Vector2.right * 10f * Time.deltaTime);
+				transform.Translate(-Vector2.right * 4f * Time.deltaTime);
 			}
 		}
 

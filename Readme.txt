@@ -35,15 +35,16 @@ V.02: Proof of Concept
     *Fill in the gaps of the basic level. Insert walls/floors/etc
     *Set rudimentary pathfinding targeting for Vulture Prefab
     
-    Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
-    
 V.03: Tighten things up
-    Fix jump parameters to adjust the look & feel
+    *Improve jump parameters to adjust the look & feel
+
+    Fix Camera when at the bottom of the "level". Otherwise it seems OK.
     Fix bounceback parameters to adjust the feel
-    Fix Camera parameters. Sometimes jumps, frequenty too high on the screen.
+
+    Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
 
 
-For later:
+To Do:
     Add Xbox controller support
     Design & implementactual level design
     Character animations
