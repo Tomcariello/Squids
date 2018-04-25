@@ -37,16 +37,15 @@ V.02: Proof of Concept
     
 V.03: Tighten things up
     *Improve jump parameters to adjust the look & feel
-
-    Fix Camera when at the bottom of the "level". Otherwise it seems OK.
+    *Fix Camera when at the bottom of the "level". Starting to understand the ActivateLimits function
+    
+    What are the lumpy sections on the floors? Box Collider Issues? Need to identify & fix them as they effect speed & jump ability
     Fix bounceback parameters to adjust the feel
-
     Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
-
 
 To Do:
     Add Xbox controller support
-    Design & implementactual level design
+    Design & implement actual level design with mini quest & behavioral modifiers
     Character animations
     Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
 

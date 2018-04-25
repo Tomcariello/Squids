@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 	//Declare variable to track player power level
 	public int playerPower = 3;
 
+	public int jumpPower= 10;
+
 	//Declare variables for health prefabs
 	public GameObject Small_Health_Prefab;
 	public GameObject Medium_Health_Prefab;
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour {
 	public void standardDrop(Vector3 deathPosition) {
 		float random = Random.Range(.0f, 1.0f);
 
-		Debug.Log("Drop random is " + random);
+		// Debug.Log("Drop random is " + random);
 		//Only Drop items 75% of the time
 		//2/3rds of the time drop small health
 		if (random < .51f) {

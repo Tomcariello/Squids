@@ -13,7 +13,7 @@ public class GroundController : MonoBehaviour {
 
 		//Execute if colliding with an InkBullet
 		if(coll.gameObject.tag == "InkBullet") {
-			Debug.Log("You shot the gorund!");
+			// Debug.Log("You shot the ground!");
 
 			//Destroy the bullet
 			Destroy(coll.gameObject);

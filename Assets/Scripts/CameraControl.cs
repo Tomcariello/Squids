@@ -66,7 +66,6 @@ public class CameraControl : MonoBehaviour {
 	private Rect windowRect;
 	
 	void Start () {
-		
 		cameraPosition = transform.position;
 		
 		//Uncomment the following if you need to get the player by name.
@@ -88,6 +87,10 @@ public class CameraControl : MonoBehaviour {
 		//From our anchor point, we set the size of the window based on the public variable above.
 		windowRect = new Rect(windowAnchorX, windowAnchorY, movementWindowSize.x, movementWindowSize.y);
 
+		//ActivateLimits (float leftLimit, float rightLimit, float bottomLimit, float topLimit )
+		ActivateLimits(-17,46,-34,0);
+		
+
 	}
 	
 	
@@ -103,6 +106,7 @@ public class CameraControl : MonoBehaviour {
 	void CameraUpdate ()
 	{
 		playerPosition = player.transform.position;
+		Debug.Log(playerPosition);
 		
 		//Only worry about updating the camera based on player position if the player has actually moved.
 		//If the tracking isn't active at all, we don't bother with any of this crap.
@@ -139,6 +143,8 @@ public class CameraControl : MonoBehaviour {
 				cameraPosition.y += DifferenceOutOfBounds( positionDifference.y, movementWindowSize.y );
 				
 			}
+
+			Debug.Log(limitCameraMovement);
 
 			// Here we clamp the desired position into the area declared in the limit variables.
 			if( limitCameraMovement )

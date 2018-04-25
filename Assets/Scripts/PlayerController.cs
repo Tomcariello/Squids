@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Z)) {
 			if (isGrounded == true) {
 				isGrounded = false;
-				GetComponent<Rigidbody2D>().AddForce(new Vector2(0,10), ForceMode2D.Impulse);
+				GetComponent<Rigidbody2D>().AddForce(new Vector2(0,GameManager.instance.jumpPower), ForceMode2D.Impulse);
 			}
 		}
 
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (GameManager.instance.playerPower == 0) {
-			Debug.Log("You're dead!");
+			// Debug.Log("You're dead!");
 			Destroy(Player_Canvas);
 		}
 
