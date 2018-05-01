@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour {
 	
 	//Click listener for the Start Game Button
     void StartGameClick() {
+		GameManager.instance.resetGame();
 		SceneManager.LoadScene("Gameplay"); //load the Gameplay scene
     }
 	

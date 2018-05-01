@@ -38,16 +38,21 @@ V.02: Proof of Concept
 V.03: Tighten things up
     *Improve jump parameters to adjust the look & feel
     *Fix Camera when at the bottom of the "level". Starting to understand the ActivateLimits function
-    
-    What are the lumpy sections on the floors? Box Collider Issues? Need to identify & fix them as they effect speed & jump ability
-    Fix bounceback parameters to adjust the feel
-    Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
+        
+    *Fixed "lumpy" sections on the floors. Ceiling elements weren't kinematic so were falling to the floor :-(
+    *Properly handle death of the player (just returns to main menu)
+    *Adjust bounceback parameters to adjust the look & feel
 
-To Do:
+    Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
+    
+
+To Do/Fix:
+    When you die the camera loses the player object.
     Add Xbox controller support
     Design & implement actual level design with mini quest & behavioral modifiers
     Character animations
     Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
+    Clamp the camera better depending on the level position
 
     UI elements:
         Inventory, Map, Etc

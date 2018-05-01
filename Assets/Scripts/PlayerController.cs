@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -117,11 +118,10 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (GameManager.instance.playerPower == 0) {
-			// Debug.Log("You're dead!");
 			Destroy(Player_Canvas);
+			SceneManager.LoadScene("MainMenu");
+			
 		}
-
-
 
 		//Check inputs & control the sprite direction
 		playerDirection();
@@ -134,6 +134,10 @@ public class PlayerController : MonoBehaviour {
 			isGrounded = true;
 		}
 
+		if(coll.gameObject.tag == "Ceiling") {
+			Debug.Log("You are touching the ceiling");
+		}
+
 		//Execute if colliding with a Level 1 Enemy
 		if(coll.gameObject.tag == "L1_Enemy") {
 			//Register on Squids power meter
@@ -141,14 +145,20 @@ public class PlayerController : MonoBehaviour {
 
 			//Apply "bounceback" effect when touching an enemy
 			if (directionPlayerFacing == "left") {
-				for (var i=0; i<10; i++) {
-					transform.Translate(Vector2.right * 10f * Time.deltaTime);
-				}
+				// for (var i=0; i<15; i++) {
+					// transform.Translate(Vector2.right * 10f * Time.deltaTime);
+					Debug.Log("Bump left");
+					GetComponent<Rigidbody2D>().AddForce(new Vector2(5,0), ForceMode2D.Impulse);
+				// }
 			} else {
-				for (var i=0; i<10; i++) {
-					transform.Translate(-Vector2.right * 10f * Time.deltaTime);
-				}
+				// for (var i=0; i<15; i++) {
+					// transform.Translate(-Vector2.right * 10f * Time.deltaTime);
+					Debug.Log("Bump right");
+					GetComponent<Rigidbody2D>().AddForce(new Vector2(-5,0), ForceMode2D.Impulse);
+				// }
 			}
+
+
 		//Do this if you collect Small Health
 		} else if(coll.gameObject.tag == "SmallHealth") {
 			//Destroy the health object you collided with

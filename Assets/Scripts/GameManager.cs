@@ -28,12 +28,12 @@ public class GameManager : MonoBehaviour {
 
 	public void resetGame() {
 		playerPower = 3;
+		jumpPower = 10;
 	}
 
 	public void standardDrop(Vector3 deathPosition) {
 		float random = Random.Range(.0f, 1.0f);
 
-		// Debug.Log("Drop random is " + random);
 		//Only Drop items 75% of the time
 		//2/3rds of the time drop small health
 		if (random < .51f) {
