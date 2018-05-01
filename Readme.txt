@@ -38,7 +38,6 @@ V.02: Proof of Concept
 V.03: Tighten things up
     *Improve jump parameters to adjust the look & feel
     *Fix Camera when at the bottom of the "level". Starting to understand the ActivateLimits function
-        
     *Fixed "lumpy" sections on the floors. Ceiling elements weren't kinematic so were falling to the floor :-(
     *Properly handle death of the player (just returns to main menu)
     *Adjust bounceback parameters to adjust the look & feel

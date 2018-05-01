@@ -88,7 +88,7 @@ public class CameraControl : MonoBehaviour {
 		windowRect = new Rect(windowAnchorX, windowAnchorY, movementWindowSize.x, movementWindowSize.y);
 
 		//ActivateLimits (float leftLimit, float rightLimit, float bottomLimit, float topLimit )
-		ActivateLimits(-17,46,-34,0);
+		// ActivateLimits(-17,46,-34,0);
 		
 
 	}
