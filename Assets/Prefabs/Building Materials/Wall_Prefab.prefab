@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114333695284834100}
   m_Layer: 5
   m_Name: Wall_Prefab
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,9 +36,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000819226198792}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.5466185, y: -10.731399, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -7413.3843, y: 3624.1, z: 0}
+  m_LocalScale: {x: 945.28406, y: 131.70076, z: 131.7007}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,18 +75,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.066437125, y: 0}
+  m_Offset: {x: 0.003130436, y: 0.0000013113022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 0.76}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 15, y: 0.76}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.097208, y: 0.76}
+  m_Size: {x: 1.2697906, y: 1.2816613}
   m_EdgeRadius: 0
 --- !u!114 &114333695284834100
 MonoBehaviour:
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7fd9a6240a2fc743aad3381bd8f267e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cbdb18540b7b9d44b403e9b2f57c016, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

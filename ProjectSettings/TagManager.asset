@@ -11,6 +11,7 @@ TagManager:
   - MediumHealth
   - LargeHealth
   - Ceiling
+  - Wall
   layers:
   - Default
   - TransparentFX
