@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-     bool isGrounded = false; //Track if the player is touching the ground
-	 string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
+    bool isGrounded = false; //Track if the player is touching the ground
+	
 	public GameObject Player_Sprite; //Reference to the player Sprite
 	public GameObject Player_Canvas; //Reference to the player Canvas
 
@@ -41,27 +41,27 @@ public class PlayerController : MonoBehaviour {
 				int bulletSpeed;
 
 				//shoot left & up
-				if (directionPlayerFacing == "left" && moveVertical > 0) {
+				if (GameManager.instance.directionPlayerFacing == "left" && moveVertical > 0) {
 					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
 					 bulletSpeed = -20;
 				//shoot left and down
-				} else if (directionPlayerFacing == "left" && moveVertical < 0) {
+				} else if (GameManager.instance.directionPlayerFacing == "left" && moveVertical < 0) {
 					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
 					 bulletSpeed = -20;
 				//shoot straight left
-				} else if (directionPlayerFacing == "left") {
+				} else if (GameManager.instance.directionPlayerFacing == "left") {
 					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,0));
 					 bulletSpeed = -20;
 				//shoot right and up
-				} else if (directionPlayerFacing == "right" && moveVertical > 0) {
+				} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical > 0) {
 					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
 					 bulletSpeed = 20;
 				//shoot right and down
-				} else if (directionPlayerFacing == "right" && moveVertical < 0) {
+				} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical < 0) {
 					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
 					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
 					 bulletSpeed = 20;
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour {
 			GameManager.instance.playerPower--;
 
 			//Apply "bounceback" effect when touching an enemy
-			if (directionPlayerFacing == "left") {
+			if (GameManager.instance.directionPlayerFacing == "left") {
 				// for (var i=0; i<15; i++) {
 					// transform.Translate(Vector2.right * 10f * Time.deltaTime);
 					Debug.Log("Bump left");
@@ -205,12 +205,12 @@ public class PlayerController : MonoBehaviour {
 
 			//If player pushing left, set player sprite to face left
 			if (moveHorizontal < 0) {
-				directionPlayerFacing = "left";
+				GameManager.instance.directionPlayerFacing = "left";
 				Vector3 spriteLocalscale = transform.localScale;
 				spriteLocalscale.x = -1.3f;
 				transform.localScale = spriteLocalscale;
 			} else { //If player pushing right, set player sprite to face right
-				directionPlayerFacing = "right";
+				GameManager.instance.directionPlayerFacing = "right";
 				Vector3 spriteLocalscale = transform.localScale;
 				spriteLocalscale.x = 1.3f;
 				transform.localScale = spriteLocalscale;

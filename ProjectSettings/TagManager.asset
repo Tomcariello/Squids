@@ -12,6 +12,8 @@ TagManager:
   - LargeHealth
   - Ceiling
   - Wall
+  - Green_Squid
+  - GreenMedicine
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Don't Collide with Player
+  - Player
   - 
   - 
   - 

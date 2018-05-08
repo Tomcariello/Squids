@@ -6,10 +6,24 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null; 
 	
-	//Declare variable to track player power level
-	public int playerPower = 3;
 
-	public int jumpPower= 10;
+	//Declare Game power variables
+	public int playerPower = 3; // player power level
+
+	public int jumpPower= 10; //  Jump power level
+
+	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
+
+	//Declare inventory variables
+	public bool Inv_greenSquidMedicine = false;
+	
+
+
+	//Declare game status variables
+	public bool talkedToGreenSquid = false;
+	public bool healedGreenSquid = false;
+	public bool escortingGreenSquid = false;
+
 
 	//Declare variables for health prefabs
 	public GameObject Small_Health_Prefab;

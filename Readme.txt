@@ -43,14 +43,27 @@ V.03: Tighten things up
     *Adjust bounceback parameters to adjust the look & feel
 
     Create *very* basic level flow. (ie. 30 seconds of running to find a key which opens a new way forward)
+        *Find injured green squid (top left cave)
+        *Green explains his predicament, needs medicine
+        *Find medicine (bottom right cave)
+        *Return to Green squid
+        *Give him medicine
+        *He's healed! Now you need to escort him out of the cave
+        *Make Green follow Red 
+
+        To finish this quest:
+            Script unavoidable rock falling so Green reveals his ability (grabbing special blocks from underneath by jumping out of the way)
+            Explain ability so it can be used by Player
+            Take Green to the exit which requires this ability (top right - not created yet)
     
 
 To Do/Fix:
+    Destroy bullets when they collide with walls/floors/ceilings
+    Health items should not interrupt your jump (no impact physics)
+    Large grab item was not collectible by Player...?
     When you die the camera loses the player object.
     Add Xbox controller support
-    Design & implement actual level design with mini quest & behavioral modifiers
-    Character animations
-    Create 2-4 additonal enemies with different behaviors, attack patterns & power levels
+    Create 2-4 additional enemies with different behaviors, attack patterns & power levels
     Clamp the camera better depending on the level position
 
     UI elements:
