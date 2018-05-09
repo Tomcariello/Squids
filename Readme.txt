@@ -50,14 +50,17 @@ V.03: Tighten things up
         *Give him medicine
         *He's healed! Now you need to escort him out of the cave
         *Make Green follow Red 
-
-        To finish this quest:
-            Script unavoidable rock falling so Green reveals his ability (grabbing special blocks from underneath by jumping out of the way)
-            Explain ability so it can be used by Player
-            Take Green to the exit which requires this ability (top right - not created yet)
-    
+        *Activate Trigger after healing GREEN
+        *Script rocks falling on your way out
+        *Create ability to grip some ceilings (tagged: Grippable_Ceiling)
+        *Green reveals his ability to grab special blocks from underneath by jumping out of the way of the blocks
+        
+        
+        Explain ability so it can be used by Player
+        Take Green to the exit which requires this ability (top right - not created yet)
 
 To Do/Fix:
+    Hide Medicine until you talk to GREEN for the first time
     Destroy bullets when they collide with walls/floors/ceilings
     Health items should not interrupt your jump (no impact physics)
     Large grab item was not collectible by Player...?

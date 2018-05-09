@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour {
 
 	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
 
+
+
+	//Declare Game Ability variables
+	public bool canGripCeiling = false;
+
+
 	//Declare inventory variables
 	public bool Inv_greenSquidMedicine = false;
 	

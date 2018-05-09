@@ -134,8 +134,10 @@ public class PlayerController : MonoBehaviour {
 			isGrounded = true;
 		}
 
-		if(coll.gameObject.tag == "Ceiling") {
-			Debug.Log("You are touching the ceiling");
+		//Control gripping ceiling
+		if(coll.gameObject.tag == "Grippable_Ceiling" && GameManager.instance.canGripCeiling == true) {
+			this.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+			Player_Sprite.transform.Rotate(0,0,180);
 		}
 
 		//Execute if colliding with a Level 1 Enemy
@@ -157,7 +159,6 @@ public class PlayerController : MonoBehaviour {
 					GetComponent<Rigidbody2D>().AddForce(new Vector2(-5,0), ForceMode2D.Impulse);
 				// }
 			}
-
 
 		//Do this if you collect Small Health
 		} else if(coll.gameObject.tag == "SmallHealth") {
@@ -183,10 +184,26 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void OnCollisionStay2D (Collision2D coll) {
+		//If Player jumps, release from the ceiling
+		if(coll.gameObject.tag == "Grippable_Ceiling" && GameManager.instance.canGripCeiling == true) {
+			if (Input.GetKey (KeyCode.Z)) {
+				this.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+			}
+		}
+	}
+
+
 	void OnCollisionExit2D (Collision2D coll) {
 		//determine if the squid is not touching the ground
 		if(coll.gameObject.tag == "Ground") {
 			isGrounded = false;
+		}
+
+		//If released from the ceiling
+		if(coll.gameObject.tag == "Grippable_Ceiling" && GameManager.instance.canGripCeiling) {
+			this.GetComponent<Rigidbody2D>().gravityScale = 1.0f; //restore gravity
+			Player_Sprite.transform.Rotate(0,0,180); //re-rotate sprite
 		}
 	}
 

@@ -14,6 +14,9 @@ TagManager:
   - Wall
   - Green_Squid
   - GreenMedicine
+  - Falling Rock
+  - Falling Rock Trigger
+  - Grippable_Ceiling
   layers:
   - Default
   - TransparentFX

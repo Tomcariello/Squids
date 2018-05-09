@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GreenSquidController : MonoBehaviour {
-
 	
 	public Text GreenTextBox; //Reference to the Text Box
+
 	public GameObject GreenCanvas; //Reference to the Canvas that holds the text box
 
-	public Sprite GreenHealthy; //Reference to the Canvas that holds the text box
+	public GameObject CutsceneTrigger; //Reference to the Canvas that holds the text box
+
+	public Sprite GreenHealthy; //Reference to the Green Sprite 
 	
 	bool isMoving = false;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,6 @@ public class GreenSquidController : MonoBehaviour {
 			StartCoroutine("followRed");
 		}
 	}
-
 
 	IEnumerator followRed () {
 
@@ -50,7 +50,6 @@ public class GreenSquidController : MonoBehaviour {
 		isMoving = false;
 	}
 
-
 	void OnCollisionEnter2D (Collision2D coll) {
 
 		//Execute when encountering the player
@@ -59,7 +58,7 @@ public class GreenSquidController : MonoBehaviour {
 			//If this is the first time you have talked to RED
 			if (GameManager.instance.talkedToGreenSquid == false) {
 				//Explain your problem
-				GreenTextBox.text = "Green Squid: Thank god your here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?";
+				GreenTextBox.text = "Green Squid: Thank god you're here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?";
 				GreenCanvas.SetActive(true);
 
 				//Set variable to TRUE so triggers can function
@@ -82,6 +81,9 @@ public class GreenSquidController : MonoBehaviour {
 					//Change layer of GREEN to one that does not collide with RED
 					gameObject.layer = 8;
 
+					//Enable the Cutscene Trigger
+					CutsceneTrigger.SetActive(true);
+
 				} else if (GameManager.instance.escortingGreenSquid == false) {
 					//Remind RED of his quest
 					GreenTextBox.text = "Green Squid: I'm weak. You're going to make me explain this again? I need medical attention so I can get out of here! Do you have any medicine?";
@@ -96,4 +98,6 @@ public class GreenSquidController : MonoBehaviour {
 		GreenTextBox.text = "Green Squid: ...";
 		GreenCanvas.SetActive(false);
 	}
+
+
 }
