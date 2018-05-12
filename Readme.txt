@@ -60,6 +60,7 @@ V.03: Tighten things up
         Take Green to the exit which requires this ability (top right - not created yet)
 
 To Do/Fix:
+    Don't allow bullets to shoot GREEN
     Hide Medicine until you talk to GREEN for the first time
     Destroy bullets when they collide with walls/floors/ceilings
     Health items should not interrupt your jump (no impact physics)
