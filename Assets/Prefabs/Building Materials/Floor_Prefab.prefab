@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50256864295115344}
   - component: {fileID: 61816962815192334}
   m_Layer: 5
-  m_Name: New Sprite
+  m_Name: Ground Prite
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,8 +51,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869629100380282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.927, y: 0, z: 0}
-  m_LocalScale: {x: 8.675261, y: 1, z: 1}
+  m_LocalPosition: {x: -1.49, y: 0, z: 0}
+  m_LocalScale: {x: 8.353923, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224555471647576140}
   m_RootOrder: 0
@@ -115,6 +115,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -154,7 +155,7 @@ RectTransform:
   m_GameObject: {fileID: 1122040506587712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 210.15657, y: 131.7007, z: 131.7007}
+  m_LocalScale: {x: 449.42862, y: 131.7007, z: 131.7007}
   m_Children:
   - {fileID: 4683664888662750}
   m_Father: {fileID: 0}
@@ -162,6 +163,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128, y: -2515.4834}
+  m_AnchoredPosition: {x: 3741, y: -4064}
   m_SizeDelta: {x: 100, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}

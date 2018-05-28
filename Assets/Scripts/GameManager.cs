@@ -5,15 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null; 
-	
 
 	//Declare Game power variables
-	public int playerPower = 3; // player power level
+	public int playerFullPower = 3; // player power level
+	public int playerCurrentPower = 3; // player power level
 
 	public int jumpPower= 10; //  Jump power level
 
 	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
-
 
 
 	//Declare Game Ability variables
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void resetGame() {
-		playerPower = 3;
+		playerCurrentPower = 3;
 		jumpPower = 10;
 	}
 

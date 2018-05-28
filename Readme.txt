@@ -35,7 +35,7 @@ V.02: Proof of Concept
     *Fill in the gaps of the basic level. Insert walls/floors/etc
     *Set rudimentary pathfinding targeting for Vulture Prefab
     
-V.03: Tighten things up
+V.03: Code Review & 1st Mission parameters
     *Improve jump parameters to adjust the look & feel
     *Fix Camera when at the bottom of the "level". Starting to understand the ActivateLimits function
     *Fixed "lumpy" sections on the floors. Ceiling elements weren't kinematic so were falling to the floor :-(
@@ -54,17 +54,29 @@ V.03: Tighten things up
         *Script rocks falling on your way out
         *Create ability to grip some ceilings (tagged: Grippable_Ceiling)
         *Green reveals his ability to grab special blocks from underneath by jumping out of the way of the blocks
-        
-        
-        Explain ability so it can be used by Player
-        Take Green to the exit which requires this ability (top right - not created yet)
+
+    **General Cleanup**
+        *Large grab item was not collectible by Player
+        *Destroy bullets when they collide with floors/ceilings/walls (Script added to bullets)
+        *Health items should not be impacted by bullets (Created a "Don't Collide with Bullets" label & adjusted physics accordingly)
+        *Health items should not interrupt your jump:
+            *Moved Script onto each health drop object (previously was on the playerController)
+            *Adjusted RigidBody2d Mass settings to Zero. (NOT kinematic, not a trigger). Updated Health Prefabs
+            *Simplified health drop application collide
+        *Added GameManager vars for playerFullPower & playerCurrentPower (was playerPower)
+        *Don't allow bullets to shoot GREEN
+
+    Explain "Grip Ceiling" ability to Player. 
+        Update Conversation visuals & content
+        Press button to advance to next statement
+        Freeze player during cutscene
+    
+    Escort Green to the exit which requires the Ceiling Grip (top right - not created yet)
+    Hide Medicine until you talk to GREEN for the first time
+    Improve player jump mechanics
+
 
 To Do/Fix:
-    Don't allow bullets to shoot GREEN
-    Hide Medicine until you talk to GREEN for the first time
-    Destroy bullets when they collide with walls/floors/ceilings
-    Health items should not interrupt your jump (no impact physics)
-    Large grab item was not collectible by Player...?
     When you die the camera loses the player object.
     Add Xbox controller support
     Create 2-4 additional enemies with different behaviors, attack patterns & power levels
@@ -74,12 +86,13 @@ To Do/Fix:
         Inventory, Map, Etc
     
     Additional player ability mechanic:
-        Grip special blocks regardless of gravity
+        *Grip special blocks regardless of gravity
         Flaming ink
         Bio-Luminescence
         Camoflauge
-    
-V.5: Start to make this professional
+
+
+V.5: Start to make this respectable
     Improve graphics
     Add Sound effects
     Add music

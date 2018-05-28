@@ -28,8 +28,8 @@ TagManager:
   - 
   - Don't Collide with Player
   - Player
-  - 
-  - 
+  - Don't Collide with Bullets
+  - Bullet
   - 
   - 
   - 

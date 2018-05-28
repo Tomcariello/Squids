@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (GameManager.instance.playerPower == 0) {
+		if (GameManager.instance.playerCurrentPower == 0) {
 			Destroy(Player_Canvas);
 			SceneManager.LoadScene("MainMenu");
 			
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 		//Execute if colliding with a Level 1 Enemy
 		if(coll.gameObject.tag == "L1_Enemy") {
 			//Register on Squids power meter
-			GameManager.instance.playerPower--;
+			GameManager.instance.playerCurrentPower--;
 
 			//Apply "bounceback" effect when touching an enemy
 			if (GameManager.instance.directionPlayerFacing == "left") {
@@ -159,29 +159,7 @@ public class PlayerController : MonoBehaviour {
 					GetComponent<Rigidbody2D>().AddForce(new Vector2(-5,0), ForceMode2D.Impulse);
 				// }
 			}
-
-		//Do this if you collect Small Health
-		} else if(coll.gameObject.tag == "SmallHealth") {
-			//Destroy the health object you collided with
-			Destroy(coll.collider.gameObject);
-			//Increase your health if not already maxed out
-			if (GameManager.instance.playerPower + 1 >= 3) {
-				GameManager.instance.playerPower = 3;
-			} else {
-				GameManager.instance.playerPower = GameManager.instance.playerPower + 1;
-			}
-		//Do this if you collect Medium Health
-		} else if(coll.gameObject.tag == "MediumHealth") {
-			//Destroy the health object you collided with
-			Destroy(coll.collider.gameObject);
-			//Increase your health if not already maxed out
-			if (GameManager.instance.playerPower + 2 >= 3) {
-				GameManager.instance.playerPower = 3;
-			} else {
-				GameManager.instance.playerPower = GameManager.instance.playerPower + 2;
-			}
 		}
-
 	}
 
 	void OnCollisionStay2D (Collision2D coll) {

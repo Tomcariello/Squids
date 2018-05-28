@@ -26,19 +26,19 @@ public class PowerMeterController : MonoBehaviour {
     }
 
      void Update() {
-         if (GameManager.instance.playerPower == 3) {
+         if (GameManager.instance.playerCurrentPower == 3) {
             tentacle1Image.GetComponent<Image>().color = hasPower;
             tentacle2Image.GetComponent<Image>().color = hasPower;
             tentacle3Image.GetComponent<Image>().color = hasPower;
-         } else if (GameManager.instance.playerPower == 2) {
+         } else if (GameManager.instance.playerCurrentPower == 2) {
             tentacle1Image.GetComponent<Image>().color = hasPower;
             tentacle2Image.GetComponent<Image>().color = hasPower;
             tentacle3Image.GetComponent<Image>().color = noPower;
-         } else if (GameManager.instance.playerPower == 1) {
+         } else if (GameManager.instance.playerCurrentPower == 1) {
             tentacle1Image.GetComponent<Image>().color = hasPower;
             tentacle2Image.GetComponent<Image>().color = noPower;
             tentacle3Image.GetComponent<Image>().color = noPower;       
-         } else if (GameManager.instance.playerPower == 0) {
+         } else if (GameManager.instance.playerCurrentPower == 0) {
             tentacle1Image.GetComponent<Image>().color = noPower;
             tentacle2Image.GetComponent<Image>().color = noPower;
             tentacle3Image.GetComponent<Image>().color = noPower;         
