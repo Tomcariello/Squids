@@ -1,11 +1,18 @@
 fileFormatVersion: 2
 guid: 4cb97daf4c518394a9185ccd044e87ec
-timeCreated: 1524176693
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Small_Health_Prefab: {fileID: 1238909593128340, guid: 63a5e16ef755eae40ae21f7fb663d7b3,
+      type: 2}
+  - Medium_Health_Prefab: {fileID: 1548149111259918, guid: f385a77c813a53b449ef2ee428b74274,
+      type: 2}
+  - Large_Health_Prefab: {fileID: 1097854995307532, guid: ed3f35695dd3b6f4aa5342e80b7a3669,
+      type: 2}
+  - CharacterTextBox: {instanceID: 0}
+  - CharacterTextPanel: {fileID: 1142450951104482, guid: 496dcad3f1c54204fa65c6b328f15a9d,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

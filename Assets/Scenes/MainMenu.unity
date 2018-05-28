@@ -431,7 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb97daf4c518394a9185ccd044e87ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPower: 3
+  playerFullPower: 3
+  playerCurrentPower: 3
   jumpPower: 10
   directionPlayerFacing: 
   canGripCeiling: 0
@@ -444,6 +445,8 @@ MonoBehaviour:
   Medium_Health_Prefab: {fileID: 1548149111259918, guid: f385a77c813a53b449ef2ee428b74274,
     type: 2}
   Large_Health_Prefab: {fileID: 1097854995307532, guid: ed3f35695dd3b6f4aa5342e80b7a3669,
+    type: 2}
+  CharacterTextPanel: {fileID: 1142450951104482, guid: 496dcad3f1c54204fa65c6b328f15a9d,
     type: 2}
 --- !u!4 &935680622
 Transform:

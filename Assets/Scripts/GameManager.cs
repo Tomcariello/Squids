@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -35,6 +36,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject Medium_Health_Prefab;
 	public GameObject Large_Health_Prefab;
 
+	//Declare variables for text interaction
+	// public Text CharacterTextBox; //Reference to the Text Box to "speak" in
+	public GameObject CharacterTextPanel; //Reference to the Canvas that holds the text box
+
 	// Use this for initialization
 	void Start () {
 		if (instance == null) {
@@ -66,5 +71,24 @@ public class GameManager : MonoBehaviour {
 		}
 		
 	}
+
+	//Control all communication scenese
+	public void haveConversation(string sayThis, Sprite characterSprite) {
+		//Instantiate the dialogue box prefab
+		GameObject DialogueBoxToPrint = Instantiate(CharacterTextPanel);
+
+		//Access the TEXT element
+		Text newText = DialogueBoxToPrint.GetComponentInChildren<Text>();
+
+		//Access the SPRITE element
+		SpriteRenderer newSprite = DialogueBoxToPrint.GetComponentInChildren<SpriteRenderer>();
+
+		//Set the text
+		newText.text = sayThis;
+
+		//Set the image
+		newSprite.sprite = characterSprite;
+	}
+
 	
 }

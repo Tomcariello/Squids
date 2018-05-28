@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class GreenSquidController : MonoBehaviour {
 	
-	public Text GreenTextBox; //Reference to the Text Box
+	//public Text CharacterText; //Reference to the Text Box
 
-	public GameObject GreenCanvas; //Reference to the Canvas that holds the text box
+	//public GameObject DialogueBox; //Reference to the Canvas that holds the text box
 
-	public GameObject CutsceneTrigger; //Reference to the Canvas that holds the text box
+	public Sprite characterSprite;
+
+	public GameObject CutsceneTrigger; //Reference to the element that will trigger after interaction with green
 
 	public Sprite GreenHealthy; //Reference to the Green Sprite 
-	
+
 	bool isMoving = false;
 	// Use this for initialization
 	void Start () {
@@ -55,49 +57,41 @@ public class GreenSquidController : MonoBehaviour {
 		//Execute when encountering the player
 		if(coll.gameObject.tag == "Player") {
 
-			//If this is the first time you have talked to RED
+			//If RED hasn't talked to GREEN yet
 			if (GameManager.instance.talkedToGreenSquid == false) {
-				//Explain your problem
-				GreenTextBox.text = "Green Squid: Thank god you're here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?";
-				GreenCanvas.SetActive(true);
-
-				//Set variable to TRUE so triggers can function
+				//Update status variable
 				GameManager.instance.talkedToGreenSquid = true;
-			} else {  //already talked to Red
 				
-				//If RED has the medicine and you're not 
-				if (GameManager.instance.Inv_greenSquidMedicine == true && GameManager.instance.escortingGreenSquid == false) {
-					//Update Green Sprite to healthy version
-					
-					//Tell RED your secret
-					GreenTextBox.text = "Green Squid: I need to return to the shoal for further medical care. Do you think you could escort me to the way out of here?";
+				//Load string text
+				string text = "Green Squid: Thank god you're here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?";
+				
+				//Call dialogue box with text & sprite
+				GameManager.instance.haveConversation(text, characterSprite);
+			//If Red does not have the medicine & has talked to Green previously
+			} else if (GameManager.instance.Inv_greenSquidMedicine == false && GameManager.instance.talkedToGreenSquid == true) {
+				//Remind RED of his quest
+				string text = "Green Squid: I'm weak. You're going to make me explain this again? I need medical attention so I can get out of here! Do you have any medicine?";
 
-					GreenCanvas.SetActive(true);
-					gameObject.GetComponent<SpriteRenderer>().sprite = GreenHealthy;
-
-					//Set escorting boolean to TRUE
-					GameManager.instance.escortingGreenSquid = true;
-
-					//Change layer of GREEN to one that does not collide with RED
-					gameObject.layer = 8;
-
-					//Enable the Cutscene Trigger
-					CutsceneTrigger.SetActive(true);
-
-				} else if (GameManager.instance.escortingGreenSquid == false) {
-					//Remind RED of his quest
-					GreenTextBox.text = "Green Squid: I'm weak. You're going to make me explain this again? I need medical attention so I can get out of here! Do you have any medicine?";
-					GreenCanvas.SetActive(true);
-				}
+				//Call dialogue box with text & sprite
+				GameManager.instance.haveConversation(text, characterSprite);
+			} else if (GameManager.instance.Inv_greenSquidMedicine == true && GameManager.instance.escortingGreenSquid == false) {
+				//Ask for an excort out of here
+				string text = "Green Squid: I need to return to the shoal for further medical care. Do you think you could escort me to the way out of here?";
+				GameManager.instance.haveConversation(text, characterSprite);
+				
+				//Update Green Sprite to healthy version
+				gameObject.GetComponent<SpriteRenderer>().sprite = GreenHealthy;
+			 	
+				 //Set escorting boolean to TRUE
+			 	GameManager.instance.escortingGreenSquid = true;
+				
+				//Change layer of GREEN to one that does not collide with RED
+				gameObject.layer = 8;
+				
+				//Enable the Cutscene Trigger
+				CutsceneTrigger.SetActive(true);
 			}
+
 		}
 	}
-
-	void OnCollisionExit2D (Collision2D coll) {
-		//When RED leaves, remove the text box from view
-		GreenTextBox.text = "Green Squid: ...";
-		GreenCanvas.SetActive(false);
-	}
-
-
 }
