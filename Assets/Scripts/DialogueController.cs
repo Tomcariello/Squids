@@ -12,6 +12,10 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	void CloseButtonClick() {
+		//Enable player interactivity
+		GameManager.instance.playerIsActive = true;
+
+		//Destroy the dialogue window
 		Destroy(gameObject);
     }
 }

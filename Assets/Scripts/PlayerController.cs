@@ -24,107 +24,109 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (GameManager.instance.playerIsActive) {
 
-		//Read control inputs
-		moveHorizontal = Input.GetAxisRaw ("Horizontal");
-		moveVertical = Input.GetAxisRaw ("Vertical");
+			//Read control inputs
+			moveHorizontal = Input.GetAxisRaw ("Horizontal");
+			moveVertical = Input.GetAxisRaw ("Vertical");
 
-		//Shoot bullets when space bar is pressed
-		if (Input.GetKey (KeyCode.Space)) {
-			//If not already shooting
-			if (currentlyShooting == false) {
-				currentlyShooting = true;
-				InkBulletSpawn = transform; //Store current position of the player
-				Quaternion shotAngle = Quaternion.Euler(new Vector3(0,0,0));
+			//Shoot bullets when space bar is pressed
+			if (Input.GetKey (KeyCode.Space)) {
+				//If not already shooting
+				if (currentlyShooting == false) {
+					currentlyShooting = true;
+					InkBulletSpawn = transform; //Store current position of the player
+					Quaternion shotAngle = Quaternion.Euler(new Vector3(0,0,0));
 
-				Vector3 m_Position;
-				int bulletSpeed;
+					Vector3 m_Position;
+					int bulletSpeed;
 
-				//shoot left & up
-				if (GameManager.instance.directionPlayerFacing == "left" && moveVertical > 0) {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
-					 bulletSpeed = -20;
-				//shoot left and down
-				} else if (GameManager.instance.directionPlayerFacing == "left" && moveVertical < 0) {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
-					 bulletSpeed = -20;
-				//shoot straight left
-				} else if (GameManager.instance.directionPlayerFacing == "left") {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,0));
-					 bulletSpeed = -20;
-				//shoot right and up
-				} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical > 0) {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,45));
-					 bulletSpeed = 20;
-				//shoot right and down
-				} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical < 0) {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
-					 bulletSpeed = 20;
-				//shoot straight right
-				} else {
-					 m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
-					 shotAngle = Quaternion.Euler(new Vector3(0,0,0));
-					 bulletSpeed = 20;
+					//shoot left & up
+					if (GameManager.instance.directionPlayerFacing == "left" && moveVertical > 0) {
+						m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
+						bulletSpeed = -20;
+					//shoot left and down
+					} else if (GameManager.instance.directionPlayerFacing == "left" && moveVertical < 0) {
+						m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,45));
+						bulletSpeed = -20;
+					//shoot straight left
+					} else if (GameManager.instance.directionPlayerFacing == "left") {
+						m_Position = new Vector3 (InkBulletSpawn.position.x - .65f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,0));
+						bulletSpeed = -20;
+					//shoot right and up
+					} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical > 0) {
+						m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,45));
+						bulletSpeed = 20;
+					//shoot right and down
+					} else if (GameManager.instance.directionPlayerFacing == "right" && moveVertical < 0) {
+						m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,-45));
+						bulletSpeed = 20;
+					//shoot straight right
+					} else {
+						m_Position = new Vector3 (InkBulletSpawn.position.x + .75f, InkBulletSpawn.position.y, InkBulletSpawn.position.z);
+						shotAngle = Quaternion.Euler(new Vector3(0,0,0));
+						bulletSpeed = 20;
+					}
+
+					// Create the Bullet from the Ink_Bullet Prefab
+					var bullet = (GameObject)Instantiate (
+						Ink_Bullet, //Prefab
+						m_Position, //Position of player
+						shotAngle);
+
+					// Add horizontal velocity to the bullet
+					bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
+
+					// Destroy the bullet after 2 seconds
+					Destroy(bullet, 2.0f);
+
+					//start coroutine to control shot speed
+					StartCoroutine(shotLimiter());
 				}
-
-				// Create the Bullet from the Ink_Bullet Prefab
-				var bullet = (GameObject)Instantiate (
-					Ink_Bullet, //Prefab
-					m_Position, //Position of player
-					shotAngle);
-
-				// Add horizontal velocity to the bullet
-				bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
-
-				// Destroy the bullet after 2 seconds
-				Destroy(bullet, 2.0f);
-
-				//start coroutine to control shot speed
-				StartCoroutine(shotLimiter());
 			}
-		}
 
-		//Jump controls
-		if (Input.GetKey (KeyCode.Z)) {
-			if (isGrounded == true) {
-				isGrounded = false;
-				GetComponent<Rigidbody2D>().AddForce(new Vector2(0,GameManager.instance.jumpPower), ForceMode2D.Impulse);
+			//Jump controls
+			if (Input.GetKey (KeyCode.Z)) {
+				if (isGrounded == true) {
+					isGrounded = false;
+					GetComponent<Rigidbody2D>().AddForce(new Vector2(0,GameManager.instance.jumpPower), ForceMode2D.Impulse);
+				}
 			}
-		}
 
-		//move player right as per keyboard input
-		if ((Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.D))) {
-			if (isGrounded == true) {
-				transform.Translate(Vector2.right * 8f * Time.deltaTime);
-			} else {
-				//Adjust this to keep momentum but not add any additional force laterally while in the air
-				transform.Translate(Vector2.right * 4f * Time.deltaTime);
+			//move player right as per keyboard input
+			if ((Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.D))) {
+				if (isGrounded == true) {
+					transform.Translate(Vector2.right * 8f * Time.deltaTime);
+				} else {
+					//Adjust this to keep momentum but not add any additional force laterally while in the air
+					transform.Translate(Vector2.right * 4f * Time.deltaTime);
+				}
 			}
-		}
 
-		//move player left as per keyboard input
-		if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.A))) {
-			if (isGrounded == true) {
-				transform.Translate(-Vector2.right * 8f * Time.deltaTime);
-			} else {
-				//Adjust this to keep momentum but not add any additional force laterally while in the air
-				transform.Translate(-Vector2.right * 4f * Time.deltaTime);
+			//move player left as per keyboard input
+			if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.A))) {
+				if (isGrounded == true) {
+					transform.Translate(-Vector2.right * 8f * Time.deltaTime);
+				} else {
+					//Adjust this to keep momentum but not add any additional force laterally while in the air
+					transform.Translate(-Vector2.right * 4f * Time.deltaTime);
+				}
 			}
-		}
 
-		if (GameManager.instance.playerCurrentPower == 0) {
-			Destroy(Player_Canvas);
-			SceneManager.LoadScene("MainMenu");
-			
-		}
+			if (GameManager.instance.playerCurrentPower == 0) {
+				Destroy(Player_Canvas);
+				SceneManager.LoadScene("MainMenu");
+				
+			}
 
-		//Check inputs & control the sprite direction
-		playerDirection();
+			//Check inputs & control the sprite direction
+			playerDirection();
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {

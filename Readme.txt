@@ -65,18 +65,19 @@ V.03: Code Review & 1st Mission parameters
             *Simplified health drop application collide
         *Added GameManager vars for playerFullPower & playerCurrentPower (was playerPower)
         *Don't allow bullets to shoot GREEN
-
-        *Update Conversation visuals & content (Moved function into GameManager. Use haveConversation( text, sprite) to call a dialogue box)
+        *Update Conversation visuals & content (Moved function into GameManager. Use haveConversation(text, sprite) to call a dialogue box)
         *Click button to close window.
+        *Get Character Image to appear along with text in dialogue text
+        *Update haveConversation() to use an ARRAY. This will allow for paging during conversations (Done but not utilized yet)
+        *Freeze player during dialogue
 
-    Update haveConversation() to use an ARRAY OF OBJECTS instead of a string. This will allow for more complex interactions
-    Freeze player during dialogue
-    Explain "Grip Ceiling" ability to Player. 
+    Improve cutscene interaction. Should this be a movie or interactive?
+    Explain "Grip Ceiling" ability to Player after cutscene.
     
     Improve player jump mechanics
     Escort Green to the exit which requires the Ceiling Grip (top right - not created yet)
-    Hide Medicine until you talk to GREEN for the first time
     Clamp the camera better depending on the level position
+    Hide Medicine until you talk to GREEN for the first time (Waiting on this until mechanics are sorted out)
 
 
 To Do/Fix:

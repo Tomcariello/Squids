@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFullPower: 3
   playerCurrentPower: 3
+  playerIsActive: 1
   jumpPower: 10
   directionPlayerFacing: 
   canGripCeiling: 0

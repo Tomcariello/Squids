@@ -63,20 +63,20 @@ public class GreenSquidController : MonoBehaviour {
 				GameManager.instance.talkedToGreenSquid = true;
 				
 				//Load string text
-				string text = "Green Squid: Thank god you're here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?";
+				string[] text = new[] {"Thank god you're here! I injured 6 of my tentacles while exploring this god-forsaken cave. I need medical attention so I can get out of here! Do you have any medicine?"};
 				
 				//Call dialogue box with text & sprite
 				GameManager.instance.haveConversation(text, characterSprite);
 			//If Red does not have the medicine & has talked to Green previously
 			} else if (GameManager.instance.Inv_greenSquidMedicine == false && GameManager.instance.talkedToGreenSquid == true) {
 				//Remind RED of his quest
-				string text = "Green Squid: I'm weak. You're going to make me explain this again? I need medical attention so I can get out of here! Do you have any medicine?";
+				string[] text = new[] {"I'm weak. You're going to make me explain this again? I need medical attention so I can get out of here! Do you have any medicine?"};
 
 				//Call dialogue box with text & sprite
 				GameManager.instance.haveConversation(text, characterSprite);
 			} else if (GameManager.instance.Inv_greenSquidMedicine == true && GameManager.instance.escortingGreenSquid == false) {
-				//Ask for an excort out of here
-				string text = "Green Squid: I need to return to the shoal for further medical care. Do you think you could escort me to the way out of here?";
+				//Ask for an escort out of here
+				string[] text = new[] {"Thank you so much! I need to return to the shoal for further medical care. Do you think you could escort me out of here?"};
 				GameManager.instance.haveConversation(text, characterSprite);
 				
 				//Update Green Sprite to healthy version

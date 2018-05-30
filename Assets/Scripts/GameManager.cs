@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null; 
 
 	//Declare Game power variables
-	public int playerFullPower = 3; // player power level
-	public int playerCurrentPower = 3; // player power level
-
+	public int playerFullPower = 3; // player's full power potential
+	public int playerCurrentPower = 3; // player current power level
+	
+	public bool playerIsActive = true; //Set this to false during cutscenes, etc
+	
 	public int jumpPower= 10; //  Jump power level
 
 	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
@@ -73,21 +75,28 @@ public class GameManager : MonoBehaviour {
 	}
 
 	//Control all communication scenese
-	public void haveConversation(string sayThis, Sprite characterSprite) {
+	public void haveConversation(string[] sayThis, Sprite characterSprite) {
+		//freeze the player
+		GameManager.instance.playerIsActive = false;
+		
 		//Instantiate the dialogue box prefab
 		GameObject DialogueBoxToPrint = Instantiate(CharacterTextPanel);
 
 		//Access the TEXT element
 		Text newText = DialogueBoxToPrint.GetComponentInChildren<Text>();
 
-		//Access the SPRITE element
-		SpriteRenderer newSprite = DialogueBoxToPrint.GetComponentInChildren<SpriteRenderer>();
+		//Set the text to what was passed to this function
+		newText.text = sayThis[0];
 
-		//Set the text
-		newText.text = sayThis;
+		//Access the character gameobject in the instantiated object
+		GameObject characterGameObject = GameObject.Find("CharacterDialogueImage");
 
-		//Set the image
+		//Acess the character image specifically
+		Image newSprite = characterGameObject.GetComponentInChildren<Image>();
+
+		//Set the image to what was passed to this function
 		newSprite.sprite = characterSprite;
+
 	}
 
 	
