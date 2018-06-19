@@ -1894,13 +1894,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 443395575}
-  m_LocalRotation: {x: 0.99888045, y: 0.047306865, z: -0, w: 0}
-  m_LocalPosition: {x: -11217, y: 2298, z: 0}
-  m_LocalScale: {x: 3130.79, y: 222.88843, z: 1.0004194}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: -11217, y: 2362, z: 0}
+  m_LocalScale: {x: 3130.79, y: 273.0383, z: 0}
   m_Children: []
   m_Father: {fileID: 913856018}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: -5.4229736}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!212 &443395577
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6200,7 +6200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1742106137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6266,6 +6266,7 @@ MonoBehaviour:
   FallingRockOne: {fileID: 687457883}
   FallingRockTwo: {fileID: 454123484}
   FallingRockThree: {fileID: 432201235}
+  characterSprite: {fileID: 21300000, guid: 1a5a688735c77764b855110b95af13d6, type: 3}
   GreenSquid: {fileID: 141264311}
 --- !u!61 &1742106141
 BoxCollider2D:

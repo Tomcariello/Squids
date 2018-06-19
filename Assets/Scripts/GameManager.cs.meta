@@ -10,8 +10,9 @@ MonoImporter:
       type: 2}
   - Large_Health_Prefab: {fileID: 1097854995307532, guid: ed3f35695dd3b6f4aa5342e80b7a3669,
       type: 2}
-  - CharacterTextBox: {instanceID: 0}
   - CharacterTextPanel: {fileID: 1142450951104482, guid: 496dcad3f1c54204fa65c6b328f15a9d,
+      type: 2}
+  - quickMessagePanel: {fileID: 1121307263679166, guid: 64173f1b7e8d862468c04f731f9765eb,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 1bd82eaa42d209341bb8c7a2649c4f61
-timeCreated: 1525823395
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - FallingRockOne: {instanceID: 0}
+  - FallingRockTwo: {instanceID: 0}
+  - FallingRockThree: {instanceID: 0}
+  - characterSprite: {fileID: 21300000, guid: 1a5a688735c77764b855110b95af13d6, type: 3}
+  - GreenSquid: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

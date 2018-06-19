@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour {
 	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
 
 
-	//Declare Game Ability variables
+	//ABILITIES
 	public bool canGripCeiling = false;
 
 
-	//Declare inventory variables
+	//INVENTORY
 	public bool Inv_greenSquidMedicine = false;
 	
 
@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour {
 	//Declare variables for text interaction
 	// public Text CharacterTextBox; //Reference to the Text Box to "speak" in
 	public GameObject CharacterTextPanel; //Reference to the Canvas that holds the text box
+
+	public GameObject quickMessagePanel; //Reference to the Canvas that holds the quick text box
 
 	// Use this for initialization
 	void Start () {
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-	//Control all communication scenese
+	//Control communication scenes
 	public void haveConversation(string[] sayThis, Sprite characterSprite) {
 		//freeze the player
 		GameManager.instance.playerIsActive = false;
@@ -82,22 +84,50 @@ public class GameManager : MonoBehaviour {
 		//Instantiate the dialogue box prefab
 		GameObject DialogueBoxToPrint = Instantiate(CharacterTextPanel);
 
-		//Access the TEXT element
-		Text newText = DialogueBoxToPrint.GetComponentInChildren<Text>();
+		//Access the Character Text Box element
+		Text characterTextBox = DialogueBoxToPrint.GetComponentInChildren<Text>();
 
 		//Set the text to what was passed to this function
-		newText.text = sayThis[0];
+		characterTextBox.text = sayThis[0];
 
-		//Access the character gameobject in the instantiated object
-		GameObject characterGameObject = GameObject.Find("CharacterDialogueImage");
+		//Access the gameobject which holds the character image in the instantiated object
+		GameObject characterDialogueImage = GameObject.Find("CharacterDialogueImage");
 
-		//Acess the character image specifically
-		Image newSprite = characterGameObject.GetComponentInChildren<Image>();
+		//Acess the image component specifically
+		Image newSprite = characterDialogueImage.GetComponentInChildren<Image>();
 
 		//Set the image to what was passed to this function
 		newSprite.sprite = characterSprite;
 
 	}
 
+	//Control quick communication scenes (no user interaction)
+	public void quickMessage(string[] sayThis, Sprite characterSprite) {
+		StartCoroutine(quickMessageCoroutine(sayThis, characterSprite));
+	}
 	
+	IEnumerator quickMessageCoroutine(string[] sayThis, Sprite characterSprite) {
+	
+		//Instantiate the dialogue box prefab
+		GameObject DialogueBoxToPrint = Instantiate(quickMessagePanel);
+
+		//Access the Character Text Box element
+		Text characterTextBox = DialogueBoxToPrint.GetComponentInChildren<Text>();
+
+		//Set the text to what was passed to this function
+		characterTextBox.text = sayThis[0];
+
+		//Access the gameobject which holds the character image in the instantiated object
+		GameObject characterDialogueImage = GameObject.Find("CharacterDialogueImage");
+
+		//Acess the image component specifically
+		Image newSprite = characterDialogueImage.GetComponentInChildren<Image>();
+
+		//Set the image to what was passed to this function
+		newSprite.sprite = characterSprite;
+
+		yield return new WaitForSeconds(2);
+		Destroy(DialogueBoxToPrint);
+		
+	}
 }

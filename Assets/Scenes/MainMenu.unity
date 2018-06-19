@@ -449,6 +449,8 @@ MonoBehaviour:
     type: 2}
   CharacterTextPanel: {fileID: 1142450951104482, guid: 496dcad3f1c54204fa65c6b328f15a9d,
     type: 2}
+  quickMessagePanel: {fileID: 1121307263679166, guid: 64173f1b7e8d862468c04f731f9765eb,
+    type: 2}
 --- !u!4 &935680622
 Transform:
   m_ObjectHideFlags: 0

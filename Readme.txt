@@ -1,6 +1,7 @@
 SQUIDS
 
-This is the plan from my perspective. I'm trying to list in order or priority but feel free to jump around & do things you find interesting.
+This is the plan. I'm prioritizing function over form to start with. Once things are working sufficiently I plan to tackle art/sound/etc.
+I reserve the right to change priorities as I see fit :-)
 Once a item is done, '*' that line to indicate the task is completed.
 
 V.01: Scaffolding
@@ -71,8 +72,16 @@ V.03: Code Review & 1st Mission parameters
         *Update haveConversation() to use an ARRAY. This will allow for paging during conversations (Done but not utilized yet)
         *Freeze player during dialogue
 
-    Improve cutscene interaction. Should this be a movie or interactive?
-    Explain "Grip Ceiling" ability to Player after cutscene.
+    **Learn to touch the ceiling cutscene:**
+        *Modified dialogue prefab design
+        *Improve cutscene interaction.
+        *Set cutscene for the grippable ceiling to be flat
+        *Make sure cutscene only triggers once
+        *Destroy JUMP message after a few seconds
+        
+        
+        Explain "Grip Ceiling" ability to Player after cutscene. (If hit by rocks, modify slightly than if got out of the way)
+        Fallen rocks should open up a new path forward
     
     Improve player jump mechanics
     Escort Green to the exit which requires the Ceiling Grip (top right - not created yet)
@@ -82,10 +91,14 @@ V.03: Code Review & 1st Mission parameters
 
 To Do/Fix:
     When you die the camera loses the player object.
-    Add Xbox controller support
     Create 2-4 additional enemies with different behaviors, attack patterns & power levels
+    Add Xbox controller support
+    Green is gittery when following Red
     
-
+V.5: Start to make this respectable
+    Dialogue Box:
+        Create transition for the start of the conversation 
+    
     UI elements:
         Inventory, Map, Etc
     
@@ -96,7 +109,6 @@ To Do/Fix:
         Camoflauge
 
 
-V.5: Start to make this respectable
     Improve graphics
     Add Sound effects
     Add music
