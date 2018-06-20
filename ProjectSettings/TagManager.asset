@@ -17,6 +17,7 @@ TagManager:
   - Falling Rock
   - Falling Rock Trigger
   - Grippable_Ceiling
+  - Destructible_Wall
   layers:
   - Default
   - TransparentFX

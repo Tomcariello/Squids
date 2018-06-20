@@ -56,40 +56,49 @@ V.03: Code Review & 1st Mission parameters
         *Create ability to grip some ceilings (tagged: Grippable_Ceiling)
         *Green reveals his ability to grab special blocks from underneath by jumping out of the way of the blocks
 
-    **General Cleanup**
-        *Large grab item was not collectible by Player
-        *Destroy bullets when they collide with floors/ceilings/walls (Script added to bullets)
-        *Health items should not be impacted by bullets (Created a "Don't Collide with Bullets" label & adjusted physics accordingly)
-        *Health items should not interrupt your jump:
-            *Moved Script onto each health drop object (previously was on the playerController)
-            *Adjusted RigidBody2d Mass settings to Zero. (NOT kinematic, not a trigger). Updated Health Prefabs
-            *Simplified health drop application collide
-        *Added GameManager vars for playerFullPower & playerCurrentPower (was playerPower)
-        *Don't allow bullets to shoot GREEN
-        *Update Conversation visuals & content (Moved function into GameManager. Use haveConversation(text, sprite) to call a dialogue box)
-        *Click button to close window.
-        *Get Character Image to appear along with text in dialogue text
-        *Update haveConversation() to use an ARRAY. This will allow for paging during conversations (Done but not utilized yet)
-        *Freeze player during dialogue
+V.04: Cleanup
+    *Large grab item was not collectible by Player
+    *Destroy bullets when they collide with floors/ceilings/walls (Script added to bullets)
+    *Health items should not be impacted by bullets (Created a "Don't Collide with Bullets" label & adjusted physics accordingly)
+    *Health items should not interrupt your jump:
+        *Moved Script onto each health drop object (previously was on the playerController)
+        *Adjusted RigidBody2d Mass settings to Zero. (NOT kinematic, not a trigger). Updated Health Prefabs
+        *Simplified health drop application collide
+    *Added GameManager vars for playerFullPower & playerCurrentPower (was playerPower)
+    *Don't allow bullets to shoot GREEN
 
-    **Learn to touch the ceiling cutscene:**
+V.05: Cutscene mechanics
+    *Update Conversation visuals & content (Moved function into GameManager. Use haveConversation(text, sprite) to call a dialogue box)
+    *Click button to close dialogue window.
+    *Get Character Image to appear along with text in dialogue text
+    *Update haveConversation() to use an ARRAY. This will allow for paging during conversations (Done but not utilized yet)
+    *Freeze player during dialogue
+
+    **"Learn to touch the ceiling" cutscene:**
         *Modified dialogue prefab design
         *Improve cutscene interaction.
         *Set cutscene for the grippable ceiling to be flat
         *Make sure cutscene only triggers once
         *Destroy JUMP message after a few seconds
         
+        *Fallen rocks destroy the wall to open up a new path forward
+        *Kill Player if hit by fallen rock
+        *Enhanced DialogueController Script to handle multiple statement/character conversations
+        *Improved cutscene markers. Timing is improved, interaction is better
         
-        Explain "Grip Ceiling" ability to Player after cutscene. (If hit by rocks, modify slightly than if got out of the way)
-        Fallen rocks should open up a new path forward
+        Explain "Grip Ceiling" ability to Player after cutscene.
     
-    Improve player jump mechanics
+
+    
     Escort Green to the exit which requires the Ceiling Grip (top right - not created yet)
+    Hide Medicine until you talk to GREEN for the first time (Waiting on this until cutscene are sorted out)
+
+
+V0.1: Fundamentals and cleanup
     Clamp the camera better depending on the level position
-    Hide Medicine until you talk to GREEN for the first time (Waiting on this until mechanics are sorted out)
-
-
-To Do/Fix:
+    Add boss before you can talk to Green
+    Add boss before you can obtain medicine
+    Improve player jump mechanics
     When you die the camera loses the player object.
     Create 2-4 additional enemies with different behaviors, attack patterns & power levels
     Add Xbox controller support

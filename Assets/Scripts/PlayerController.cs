@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour {
 			if (GameManager.instance.playerCurrentPower == 0) {
 				Destroy(Player_Canvas);
 				SceneManager.LoadScene("MainMenu");
-				
 			}
 
 			//Check inputs & control the sprite direction
@@ -149,18 +148,13 @@ public class PlayerController : MonoBehaviour {
 
 			//Apply "bounceback" effect when touching an enemy
 			if (GameManager.instance.directionPlayerFacing == "left") {
-				// for (var i=0; i<15; i++) {
-					// transform.Translate(Vector2.right * 10f * Time.deltaTime);
-					Debug.Log("Bump left");
-					GetComponent<Rigidbody2D>().AddForce(new Vector2(5,0), ForceMode2D.Impulse);
-				// }
+				GetComponent<Rigidbody2D>().AddForce(new Vector2(5,0), ForceMode2D.Impulse);
 			} else {
-				// for (var i=0; i<15; i++) {
-					// transform.Translate(-Vector2.right * 10f * Time.deltaTime);
-					Debug.Log("Bump right");
-					GetComponent<Rigidbody2D>().AddForce(new Vector2(-5,0), ForceMode2D.Impulse);
-				// }
+				GetComponent<Rigidbody2D>().AddForce(new Vector2(-5,0), ForceMode2D.Impulse);
 			}
+		}  else if (coll.gameObject.tag == "Falling Rock") {
+			//Kill player if hit by falling rock
+			GameManager.instance.playerCurrentPower = 0;
 		}
 	}
 

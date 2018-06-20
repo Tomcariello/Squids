@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour {
 	// public Text CharacterTextBox; //Reference to the Text Box to "speak" in
 	public GameObject CharacterTextPanel; //Reference to the Canvas that holds the text box
 
+	public string[] textForConversations;
+	public Sprite[] characterSpritesForConversations;
+
 	public GameObject quickMessagePanel; //Reference to the Canvas that holds the quick text box
 
 	// Use this for initialization
@@ -77,10 +80,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	//Control communication scenes
-	public void haveConversation(string[] sayThis, Sprite characterSprite) {
+	public void haveConversation(string[] sayThis, Sprite[] characterSprite) {
 		//freeze the player
 		GameManager.instance.playerIsActive = false;
-		
+
+		//Set the current conversation to the global scope
+		textForConversations = sayThis;
+		characterSpritesForConversations = characterSprite;
+
 		//Instantiate the dialogue box prefab
 		GameObject DialogueBoxToPrint = Instantiate(CharacterTextPanel);
 
@@ -88,7 +95,7 @@ public class GameManager : MonoBehaviour {
 		Text characterTextBox = DialogueBoxToPrint.GetComponentInChildren<Text>();
 
 		//Set the text to what was passed to this function
-		characterTextBox.text = sayThis[0];
+		characterTextBox.text = textForConversations[0];
 
 		//Access the gameobject which holds the character image in the instantiated object
 		GameObject characterDialogueImage = GameObject.Find("CharacterDialogueImage");
@@ -97,7 +104,7 @@ public class GameManager : MonoBehaviour {
 		Image newSprite = characterDialogueImage.GetComponentInChildren<Image>();
 
 		//Set the image to what was passed to this function
-		newSprite.sprite = characterSprite;
+		newSprite.sprite = characterSpritesForConversations[0];
 
 	}
 
