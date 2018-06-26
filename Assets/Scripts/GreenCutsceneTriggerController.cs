@@ -22,7 +22,7 @@ public class GreenCutsceneTriggerController : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D coll) {
 		
-		if (coll.gameObject.tag == "Player" && cutsceneExecuted == false) {
+		if (coll.gameObject.tag == "Player" && GameManager.instance.healedGreenSquid == true && cutsceneExecuted == false) {
 			cutsceneExecuted = true;
 			DropTheBombs();
 		}
@@ -33,9 +33,6 @@ public class GreenCutsceneTriggerController : MonoBehaviour {
 		rocksAreRolling = true;
 
 		StartCoroutine(rocksAreRollingCutscene());
-
-		//Empower Red to hold the ceiling
-		// GameManager.instance.canGripCeiling = (true);
 
 	}
 
@@ -88,7 +85,7 @@ public class GreenCutsceneTriggerController : MonoBehaviour {
 		//GREEN jumps & grips the ceiling!
 		GreenSquid.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,GameManager.instance.jumpPower), ForceMode2D.Impulse);
 
-		//Rotate GREEN's sprite face the opposite direction
+		//Rotate GREEN's sprite upside down
 		GreenSquid.transform.Rotate(0,0,180);
 
 		yield return new WaitForSeconds(1.5f);
@@ -98,17 +95,37 @@ public class GreenCutsceneTriggerController : MonoBehaviour {
 
 		//Move green to his target spot
 		while (GreenSquid.transform.position != targetPosition) {
-			GreenSquid.transform.position = Vector3.MoveTowards(GreenSquid.transform.position, targetPosition, 3.0f * Time.deltaTime);
+			GreenSquid.transform.position = Vector3.MoveTowards(GreenSquid.transform.position, targetPosition, 1.0f * Time.deltaTime);
 		}
 
 		yield return new WaitForSeconds(5f);
 
 		//Load dialogue text
-		text = new[] {"How the hell did you do that!?!?", "What? Explore so well?"};
-		Sprite[] characterIcons = new[] {redCharacterSprite, greenCharacterSprite};
+		text = new[] {
+			"How the hell did you do that!?!?", 
+			"What? Explore so well?",
+			"How did you stick to the ceiling like that?",
+			"They sent you out of the shoal without teaching you that?",
+			"You can tell by the type of stone. These green ones you can grip. Just jump into them.",
+			"Jump again to release your grip."
+		};
+		Sprite[] characterIcons = new[] {
+			redCharacterSprite,
+			greenCharacterSprite,
+			redCharacterSprite,
+			greenCharacterSprite,
+			greenCharacterSprite,
+			greenCharacterSprite,
+		};
 				
 		//Call dialogue box with text & sprite
 		GameManager.instance.haveConversation(text, characterIcons);
+
+		//Red gets ceiling grip ability
+		GameManager.instance.canGripCeiling = true;
+
+		//Green starts following Red to the exit
+		GameManager.instance.escortingGreenSquid = true;
 
     }
 }

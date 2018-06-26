@@ -88,7 +88,9 @@ public class GreenSquidController : MonoBehaviour {
 				//Update Green Sprite to healthy version
 				gameObject.GetComponent<SpriteRenderer>().sprite = GreenHealthy;
 			 	
-				 //Set escorting boolean to TRUE
+				GameManager.instance.healedGreenSquid = true;
+				
+				//Set escorting boolean to TRUE
 			 	GameManager.instance.escortingGreenSquid = true;
 				
 				//Change layer of GREEN to one that does not collide with RED

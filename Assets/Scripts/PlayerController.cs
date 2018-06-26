@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//If released from the ceiling
-		if(coll.gameObject.tag == "Grippable_Ceiling" && GameManager.instance.canGripCeiling) {
+		if(coll.gameObject.tag == "Grippable_Ceiling" && GameManager.instance.canGripCeiling == true) {
 			this.GetComponent<Rigidbody2D>().gravityScale = 1.0f; //restore gravity
 			Player_Sprite.transform.Rotate(0,0,180); //re-rotate sprite
 		}

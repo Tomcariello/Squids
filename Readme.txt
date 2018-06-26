@@ -80,31 +80,28 @@ V.05: Cutscene mechanics
         *Set cutscene for the grippable ceiling to be flat
         *Make sure cutscene only triggers once
         *Destroy JUMP message after a few seconds
-        
         *Fallen rocks destroy the wall to open up a new path forward
         *Kill Player if hit by fallen rock
         *Enhanced DialogueController Script to handle multiple statement/character conversations
         *Improved cutscene markers. Timing is improved, interaction is better
-        
-        Explain "Grip Ceiling" ability to Player after cutscene.
-    
+        *Explain "Grip Ceiling" ability to Player after cutscene.
+        *Escort Green to the exit which requires the Ceiling Grip (area opened by rocks hitting the walls)
 
-    
-    Escort Green to the exit which requires the Ceiling Grip (top right - not created yet)
-    Hide Medicine until you talk to GREEN for the first time (Waiting on this until cutscene are sorted out)
-
-
-V0.1: Fundamentals and cleanup
-    Clamp the camera better depending on the level position
+V0.1: Bring the fun!!! 
     Add boss before you can talk to Green
     Add boss before you can obtain medicine
+    Hide Medicine until you talk to GREEN for the first time (Waiting on this until cutscene are sorted out)
+    Create 2-4 additional enemies with different behaviors, attack patterns & power levels    
+    Add Xbox controller support    
+    
+V0.2: Fix some basics!
+    Fix Green's orientation when following RED (gets upside down if using ceiling grip)
+    Green is jittery when following Red
+    Clamp the camera better depending on the level position
     Improve player jump mechanics
     When you die the camera loses the player object.
-    Create 2-4 additional enemies with different behaviors, attack patterns & power levels
-    Add Xbox controller support
-    Green is gittery when following Red
     
-V.5: Start to make this respectable
+V.5: Polish!!
     Dialogue Box:
         Create transition for the start of the conversation 
     
@@ -112,13 +109,12 @@ V.5: Start to make this respectable
         Inventory, Map, Etc
     
     Additional player ability mechanic:
-        *Grip special blocks regardless of gravity
         Flaming ink
         Bio-Luminescence
         Camoflauge
 
-
     Improve graphics
     Add Sound effects
     Add music
-    Add animations
+    Add character animations
+    Add rock into wall animations/effects

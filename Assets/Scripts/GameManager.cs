@@ -13,14 +13,12 @@ public class GameManager : MonoBehaviour {
 	
 	public bool playerIsActive = true; //Set this to false during cutscenes, etc
 	
-	public int jumpPower= 10; //  Jump power level
+	public int jumpPower = 10; //  Jump power level
 
 	public string directionPlayerFacing; //Track the direction the player is pointing. Used for aiming bullets left/right
 
-
 	//ABILITIES
-	public bool canGripCeiling = false;
-
+	public bool canGripCeiling = true;
 
 	//INVENTORY
 	public bool Inv_greenSquidMedicine = false;
@@ -55,6 +53,10 @@ public class GameManager : MonoBehaviour {
 		} else {
 			DestroyObject(gameObject);
 		}
+	}
+
+	void Update() {
+		// Debug.LogWarning("canGripCeiling is " + GameManager.instance.canGripCeiling);
 	}
 
 	public void resetGame() {
